@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviours="clr-namespace:Cats.Behaviours;assembly=Cats"
+             behaviours:ViewModelResolver.AutoWireViewModel="True"
+             xmlns:local="clr-namespace:Cats"
+             x:Class="Cats.Views.PeoplePage" Title="AGL List of Cats">
+
+    <Grid Padding="10, 0">
+        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0, 20">
+            <Button Text="Get Cats!" Command="{Binding GetPeopleCommand}"></Button>
+
+            <Label Text="Male" />
+
+            <ListView ItemsSource="{Binding OwnedByMale}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Label Text="Female" />
+
+            <ListView ItemsSource="{Binding OwnedByFemale}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Label Text="Meow" HorizontalOptions="CenterAndExpand"/>
+
+        </StackLayout>
+
+        <StackLayout Margin="100" IsVisible="{Binding IsSearching}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <ActivityIndicator HeightRequest="50" WidthRequest="50" Color="Red" IsRunning="True" />
+        </StackLayout>
+    </Grid>
+    
+    
+
+</ContentPage>
